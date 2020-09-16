@@ -9,13 +9,10 @@ if (empty($name && $mail && $age)) {
     $message = 'Non hai inserito tutti i dati';
 } else {
     $checkAll = strlen($name) > 3 && strpos($mail,'@') > -1 && strpos($mail,'.') > -1 && ctype_digit($age);
-    if ($checkAll) {
-        $message = 'Accesso riuscito';
-    } else {
-        $message = 'Accesso negato';
-    }
+    $checkAll ? $message = 'Accesso riuscito' : $message = 'Accesso negato';
 }
 echo $message;
 ?>
 
-<!-- Nota: confronta intval, is_numeric, is_int, (int)$var -->
+<!-- Confronta: intval, is_numeric, is_int, (int)$var.
+Nota: is_nan verifica solo che l'espressione non sia un particolare valore di tipo float denominato NaN, il quale non può essere rappresentato/interpretato come numero reale. Non fornisce info sul tipo di dato. Ecco perché restituisce false con una stringa o anche con true/false booleani -->
